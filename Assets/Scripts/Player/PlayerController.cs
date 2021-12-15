@@ -5,22 +5,15 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviourPun
 {
-
     Character myCharacter;
-    
-    private void Start()
-    {
-        if(!photonView.IsMine)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            myCharacter = GetComponent<Character>();
-        }
-    }
+   
     private void Update()
     {
+        if(myCharacter==null)
+        {
+            return;
+        }
+
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             //Movimiento a la derecha
@@ -37,9 +30,7 @@ public class PlayerController : MonoBehaviourPun
            Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ||
            Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Alpha1)))
         {
-
             myCharacter.Idle();
-
 
         }
 
@@ -80,5 +71,9 @@ public class PlayerController : MonoBehaviourPun
 
 
 
+    }
+    public void SetCharacter(Character characterToSet)
+    {
+        myCharacter= characterToSet;
     }
 }

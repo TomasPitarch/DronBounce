@@ -14,7 +14,7 @@ public class PlayerNameView : MonoBehaviourPun
     
     void Start()
     {
-        SetDirection();
+        //SetDirection();
 
         if (photonView.IsMine)
         {
@@ -23,6 +23,11 @@ public class PlayerNameView : MonoBehaviourPun
        
 
     }
+    private void LateUpdate()
+    {
+        canvas.transform.LookAt(canvas.transform.position+ Camera.main.transform.rotation*Vector3.forward,
+                                Camera.main.transform.rotation*Vector3.up);
+    }
 
     [PunRPC]
     void SetName(string name)
@@ -30,8 +35,8 @@ public class PlayerNameView : MonoBehaviourPun
         playerName.text = name;
     }
     
-    void SetDirection()
-    {
-        canvas.transform.LookAt(Camera.main.transform);
-    }
+    //void SetDirection()
+    //{
+    //    canvas.transform.LookAt(Camera.main.transform);
+    //}
 }

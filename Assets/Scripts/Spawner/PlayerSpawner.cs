@@ -18,9 +18,13 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField]
     string PlayerPrefabName;
 
+    [SerializeField]
+    PlayerController _playerController;
+
     private void Awake()
     {
         myCamera = Camera.main;
+        _playerController = GameObject.FindObjectOfType<PlayerController>();
     }
     void Start()
     {
@@ -35,9 +39,13 @@ public class PlayerSpawner : MonoBehaviour
                                   rotation);
 
 
+
         myCamera.transform.position = CameraSpawnPoints[order].transform.position;
         rotation.eulerAngles = CameraSpawnPoints[order].transform.eulerAngles;
-        myCamera.transform.eulerAngles = rotation.eulerAngles; 
+        myCamera.transform.eulerAngles = rotation.eulerAngles;
+
+
+        _playerController.SetCharacter(character.GetComponent<Character>());
         
     }
     

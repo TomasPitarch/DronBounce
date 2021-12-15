@@ -37,22 +37,22 @@ public class BallSpawner : MonoBehaviour
 
     void Spawn()
     {
-        var ball= PhotonNetwork.Instantiate(ballPrefabName, Vector3.zero, Quaternion.identity).GetComponent<Ball_MasterClient>();
+        var ball= PhotonNetwork.Instantiate(ballPrefabName, Vector3.zero, Quaternion.identity).GetComponent<Ball>();
 
 
-        ball.GetComponent<Ball_MasterClient>().Init(transform.position);
+        ball.GetComponent<Ball>().Init(transform.position);
 
 
-        OnGameEnd += ball.GetComponent<Ball_MasterClient>().BallEndGameDestruction;
+        OnGameEnd += ball.GetComponent<Ball>().BallRelease;
         
 
-        ball.GetComponent<Ball_MasterClient>().OnBallsRelease += DieBall;
+        ball.GetComponent<Ball>().OnBallsRelease += DieBall;
     }
       
-    void DieBall(Ball_MasterClient ballReference)
+    void DieBall(Ball ballReference)
     {
         liveBalls--;
-        OnGameEnd-= ballReference.GetComponent<Ball_MasterClient>().BallEndGameDestruction;
+        OnGameEnd-= ballReference.GetComponent<Ball>().BallRelease;
         NextBall();
     }
 

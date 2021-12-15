@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2863715311058998057}
   - component: {fileID: 2863715311058998058}
   - component: {fileID: 8456541184616918690}
-  - component: {fileID: 262680571020336752}
   - component: {fileID: 2234411982803260691}
   m_Layer: 0
   m_Name: Ball
@@ -62,6 +61,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -86,6 +86,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &2863715311058998061
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -128,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialForce: 5
+  SparkEffect: {fileID: 197494, guid: 8af7fc23449fb134587debd98a00604a, type: 3}
+  BounceSound: BallBounce
 --- !u!114 &8456541184616918690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,20 +154,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &262680571020336752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2863715311058998060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d2f322f7d1ae2a40b5fa49b2031fd5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SparkEffect: {fileID: 197494, guid: 8af7fc23449fb134587debd98a00604a, type: 3}
-  BounceSound: BallBounce
 --- !u!114 &2234411982803260691
 MonoBehaviour:
   m_ObjectHideFlags: 0

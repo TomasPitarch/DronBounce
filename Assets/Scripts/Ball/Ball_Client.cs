@@ -7,7 +7,6 @@ using System;
 public class Ball_Client : MonoBehaviourPun
 {
     
-
     [SerializeField]
     GameObject SparkEffect;
 

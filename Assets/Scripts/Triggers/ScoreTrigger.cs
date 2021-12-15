@@ -44,7 +44,7 @@ public class ScoreTrigger : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            var ball = other.GetComponent<Ball_MasterClient>();
+            var ball = other.GetComponent<Ball>();
 
             if (ball != null)
             {

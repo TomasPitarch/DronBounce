@@ -54,6 +54,8 @@ MonoBehaviour:
   - LigthsOnScore
   - EndGameClientRelease
   - Move
+  - SetNames
+  - LoadGameScene
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
