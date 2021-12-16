@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2863715311058998057}
   - component: {fileID: 2863715311058998058}
   - component: {fileID: 8456541184616918690}
-  - component: {fileID: 2234411982803260691}
+  - component: {fileID: -4986467181549171345}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -150,11 +150,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2234411982803260691}
+  - {fileID: -4986467181549171345}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2234411982803260691
+--- !u!114 &-4986467181549171345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 0.5
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1001 &2329546878623692048
 PrefabInstance:
   m_ObjectHideFlags: 0

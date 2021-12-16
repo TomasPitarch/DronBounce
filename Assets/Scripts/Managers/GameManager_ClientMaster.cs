@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
+using System.Threading.Tasks;
 
 public class GameManager_ClientMaster : MonoBehaviourPunCallbacks
 {
@@ -37,6 +38,7 @@ public class GameManager_ClientMaster : MonoBehaviourPunCallbacks
     void Start()
     {
         myScoreManager.OnLose += PlayerLose;
+        StartGame();
     }
     void Update()
     {
@@ -74,12 +76,29 @@ public class GameManager_ClientMaster : MonoBehaviourPunCallbacks
         }
     }
 
-    void StartGame()
+    async void StartGame()
     {
-        SpawnTank();
+
+        await Task.Delay(5);
+        RegisterPlayers();
+
+        //SpawnTank();
         myBallSpawner.NextBall();
         myScoreManager.SetInitialScores();
     }
+
+    private void RegisterPlayers()
+    {
+        int i = 0;
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            PlayersOrders.Add(i, player);
+
+            ActivePlayers.Add(player);
+            i++;
+        }
+    }
+
     void EndGame()
     {
         Debug.Log("GM/clientmaster/endgame()");
@@ -91,27 +110,27 @@ public class GameManager_ClientMaster : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate("Tank", new Vector3(-1, 0.4f, 0.3f)
         , Quaternion.identity);
     }
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        if(PhotonNetwork.IsMasterClient)
-        {
-            PlayersOrders.Add(PhotonNetwork.CurrentRoom.PlayerCount - 1, newPlayer);
+    //public override void OnPlayerEnteredRoom(Player newPlayer)
+    //{
+    //    if(PhotonNetwork.IsMasterClient)
+    //    {
+    //        PlayersOrders.Add(PhotonNetwork.CurrentRoom.PlayerCount - 1, newPlayer);
 
-            ActivePlayers.Add(newPlayer);
+    //        ActivePlayers.Add(newPlayer);
 
-            var order = PhotonNetwork.CurrentRoom.PlayerCount;
+    //        var order = PhotonNetwork.CurrentRoom.PlayerCount;
 
-            if (order == MaxPlayerAllowed)
-            {
-                StartGame();
-                PhotonNetwork.CurrentRoom.IsOpen = false;
+    //        if (order == MaxPlayerAllowed)
+    //        {
+    //            StartGame();
+    //            PhotonNetwork.CurrentRoom.IsOpen = false;
 
-                Debug.Log("cerramos cupos");
-            }
-        }
+    //            Debug.Log("cerramos cupos");
+    //        }
+    //    }
            
 
         
-    }
+    //}
    
 }

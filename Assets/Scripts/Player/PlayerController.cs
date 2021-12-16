@@ -76,4 +76,12 @@ public class PlayerController : MonoBehaviourPun
     {
         myCharacter= characterToSet;
     }
+    public void RigthButton()
+    {
+        myCharacter.MoveRight();
+    }
+    public void LeftButton()
+    {
+        myCharacter.MoveLeft();
+    }
 }

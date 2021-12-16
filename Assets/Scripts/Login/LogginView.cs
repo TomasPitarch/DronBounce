@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LogginView : MonoBehaviour
 {
     [SerializeField] Button connectButton;
     [SerializeField] LogginManager myLogginManager;
 
-    [SerializeField] Text roomName;
-    [SerializeField] Text playerName;
+    [SerializeField] TMP_InputField roomName;
+    [SerializeField] TMP_InputField playerName;
 
 
 

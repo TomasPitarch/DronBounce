@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using System;
+using TMPro;
 
 public class HUDView : MonoBehaviourPun
 {
@@ -11,7 +12,7 @@ public class HUDView : MonoBehaviourPun
     Text roomText;
 
     [SerializeField]
-    Text resultText;
+    TextMeshProUGUI resultText;
 
     [SerializeField]
     Button ReLogButton;
@@ -21,6 +22,9 @@ public class HUDView : MonoBehaviourPun
 
     [SerializeField]
     List<Text> ScoreVList;
+
+    [SerializeField]
+    List<Text> ScoreVNames;
 
 
     private void Awake()
@@ -52,10 +56,12 @@ public class HUDView : MonoBehaviourPun
        if (playername=="")
        {
             ScoreVList[PlayerOrder].text = ("Player" + PlayerOrder + ":" + newScore);
+
        }
        else
        {
-            ScoreVList[PlayerOrder].text = (playername + ":" + newScore);
+            ScoreVList[PlayerOrder].text = newScore.ToString();
+            ScoreVNames[PlayerOrder].text = playername;
        }
 
     }
