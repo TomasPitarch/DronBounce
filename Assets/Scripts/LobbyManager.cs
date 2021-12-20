@@ -26,14 +26,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         SetPlayer(0,PhotonNetwork.LocalPlayer.NickName);
     }
-
     private void Start()
     {
         RoomName.text += PhotonNetwork.CurrentRoom.Name;
     }
-
     void SetPlayer(int order,string playerNickName)
     {
+
         ListOfNickNames[order].text = playerNickName;
     }
 
@@ -53,22 +52,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel("Game");
     }
-
-
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         if(!PhotonNetwork.IsMasterClient)
         {
             return;
         }
-        var orderPlayer = PhotonNetwork.PlayerList.Length;
+        var orderPlayer = (PhotonNetwork.PlayerList.Length)-1;
         var nickName = newPlayer.NickName;
 
         SetPlayer(orderPlayer, nickName);
 
         UpdateNickNamesList();
     }
-
     private void UpdateNickNamesList()
     {
         var stringUpdate = "";
@@ -81,7 +77,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         photonView.RPC("SetNames",RpcTarget.Others,stringUpdate);
     }
-
     public void StartGame()
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
