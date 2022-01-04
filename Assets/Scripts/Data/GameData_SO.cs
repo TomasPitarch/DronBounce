@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameData_SO : ScriptableObject
 {
     public int ScoreToLose;
+    public int FreezeTime;
        
    
 }

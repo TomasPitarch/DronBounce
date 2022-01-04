@@ -72,4 +72,8 @@ public class BallSpawner : MonoBehaviour
             StartCoroutine("SpawnBall", randomInt);
         }
     }
+    public void FirstBall()
+    {
+        StartCoroutine("SpawnBall", 0);
+    }
 }

@@ -16,6 +16,9 @@ public class GameManager_ClientMaster : MonoBehaviourPunCallbacks
     [SerializeField]
     public ScoreManager_ClientMaster myScoreManager;
 
+    [SerializeField]
+    FreezeCounter _freezeCounter;
+
 
     [SerializeField]
     int MaxPlayerAllowed;
@@ -79,11 +82,12 @@ public class GameManager_ClientMaster : MonoBehaviourPunCallbacks
     async void StartGame()
     {
 
-        await Task.Delay(5);
+        await _freezeCounter.StartCounter(5);
+        
         RegisterPlayers();
 
         //SpawnTank();
-        myBallSpawner.NextBall();
+        myBallSpawner.FirstBall();
         myScoreManager.SetInitialScores();
     }
 
